@@ -1,0 +1,96 @@
+# Project: Sam
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Sam_private.res
+OBJ  = bp.o bpdlg.o debugdlg.o fstream.o ldsp.o lgpu.o llist.o lmmu.o lpsp.o lregkey.o lslist.o lstring.o lzari.o memviewdlg.o os.o Sam.o sce.o syscall.o util.o cpu/r4000.o cpu/r4000dis.o cpu/vfpu.o $(RES)
+LINKOBJ  = bp.o bpdlg.o debugdlg.o fstream.o ldsp.o lgpu.o llist.o lmmu.o lpsp.o lregkey.o lslist.o lstring.o lzari.o memviewdlg.o os.o Sam.o sce.o syscall.o util.o cpu/r4000.o cpu/r4000dis.o cpu/vfpu.o $(RES)
+LIBS =  -L"f:/mingw/lib" -mwindows F:/Mingw/lib/libopengl32.a F:/Mingw/lib/libcomctl32.a F:/Mingw/lib/libole32.a  -s -march=pentiumpro 
+INCS =  -I"f:/mingw/include"  -I"e:/sam"  -I"e:/sam/cpu" 
+CXXINCS =  -I"f:/mingw/include"  -I"e:/sam"  -I"e:/sam/cpu" 
+BIN  = Sam.exe
+CXXFLAGS = $(CXXINCS) -D_WIN32_IE=0x400   -O3 -march=pentiumpro
+CFLAGS = $(INCS) -D_WIN32_IE=0x400   -O3 -march=pentiumpro
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Sam.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Sam.exe" $(LIBS)
+
+bp.o: bp.cpp
+	$(CPP) -c bp.cpp -o bp.o $(CXXFLAGS)
+
+bpdlg.o: bpdlg.cpp
+	$(CPP) -c bpdlg.cpp -o bpdlg.o $(CXXFLAGS)
+
+debugdlg.o: debugdlg.cpp
+	$(CPP) -c debugdlg.cpp -o debugdlg.o $(CXXFLAGS)
+
+fstream.o: fstream.cpp
+	$(CPP) -c fstream.cpp -o fstream.o $(CXXFLAGS)
+
+ldsp.o: ldsp.cpp
+	$(CPP) -c ldsp.cpp -o ldsp.o $(CXXFLAGS)
+
+lgpu.o: lgpu.cpp
+	$(CPP) -c lgpu.cpp -o lgpu.o $(CXXFLAGS)
+
+llist.o: llist.cpp
+	$(CPP) -c llist.cpp -o llist.o $(CXXFLAGS)
+
+lmmu.o: lmmu.cpp
+	$(CPP) -c lmmu.cpp -o lmmu.o $(CXXFLAGS)
+
+lpsp.o: lpsp.cpp
+	$(CPP) -c lpsp.cpp -o lpsp.o $(CXXFLAGS)
+
+lregkey.o: lregkey.cpp
+	$(CPP) -c lregkey.cpp -o lregkey.o $(CXXFLAGS)
+
+lslist.o: lslist.cpp
+	$(CPP) -c lslist.cpp -o lslist.o $(CXXFLAGS)
+
+lstring.o: lstring.cpp
+	$(CPP) -c lstring.cpp -o lstring.o $(CXXFLAGS)
+
+lzari.o: lzari.cpp
+	$(CPP) -c lzari.cpp -o lzari.o $(CXXFLAGS)
+
+memviewdlg.o: memviewdlg.cpp
+	$(CPP) -c memviewdlg.cpp -o memviewdlg.o $(CXXFLAGS)
+
+os.o: os.cpp
+	$(CPP) -c os.cpp -o os.o $(CXXFLAGS)
+
+Sam.o: Sam.cpp
+	$(CPP) -c Sam.cpp -o Sam.o $(CXXFLAGS)
+
+sce.o: sce.cpp
+	$(CPP) -c sce.cpp -o sce.o $(CXXFLAGS)
+
+syscall.o: syscall.cpp
+	$(CPP) -c syscall.cpp -o syscall.o $(CXXFLAGS)
+
+util.o: util.cpp
+	$(CPP) -c util.cpp -o util.o $(CXXFLAGS)
+
+cpu/r4000.o: cpu/r4000.cpp
+	$(CPP) -c cpu/r4000.cpp -o cpu/r4000.o $(CXXFLAGS)
+
+cpu/r4000dis.o: cpu/r4000dis.cpp
+	$(CPP) -c cpu/r4000dis.cpp -o cpu/r4000dis.o $(CXXFLAGS)
+
+cpu/vfpu.o: cpu/vfpu.cpp
+	$(CPP) -c cpu/vfpu.cpp -o cpu/vfpu.o $(CXXFLAGS)
+
+Sam_private.res: Sam_private.rc sam_ex.rc 
+	$(WINDRES) -i Sam_private.rc --input-format=rc -o Sam_private.res -O coff 
